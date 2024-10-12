@@ -236,3 +236,14 @@ Docs: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespac
 
 - Set a default namespace for all subsequent commands
     - `kubectl config set-context --current --namespace=<NAMESPACE-NAME>`
+
+- Delete all the pods in a single namespace:
+    - `kubectl delete --all pods --namespace=foo`
+
+- Delecrative way
+    - ```
+    apiVersion: v1
+    kind: Namespace
+    metadata:
+    name: <insert-namespace-name-here>
+     ```
