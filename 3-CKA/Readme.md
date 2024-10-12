@@ -237,9 +237,6 @@ Docs: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespac
 - Set a default namespace for all subsequent commands
     - `kubectl config set-context --current --namespace=<NAMESPACE-NAME>`
 
-- Delete all the pods in a single namespace:
-    - `kubectl delete --all pods --namespace=foo`
-
 - Delecrative way
     - ```
     apiVersion: v1
@@ -247,3 +244,72 @@ Docs: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespac
     metadata:
     name: <insert-namespace-name-here>
      ```
+
+
+# POD
+
+* A pod always runs on a node.
+* Pods are the smallest deployable units of computing that you can create and manage in Kubernetes.
+* A Pod is a group of one or more containers, with shared storage and network resources, and a specification for how to run the containers
+* Containers in the same pod share a local network and the same resources, allowing them to easily communicate with other containers.
+* A pod is  a group of one or more containers which will be running on some node.
+* Each pod has its unique IP address within the cluster.
+
+### Imperative Way
+- create a pod
+    - `kubectl run <nameofPod> <image>  <option> <namespace>`
+    - `kubectl run nginxpod --image=nginx -n test-ns`
+
+### Delecrative way
+**Example:** The following is an example of a Pod which consists of a container running the image `nginx:1.14.2`.
+
+#### pods/simple-pod.yaml
+    - Create Pod :
+        ``` bash 
+        apiVersion: v1
+        kind: Pod
+        metadata:
+        name: nginx
+        spec:
+        containers:
+        - name: nginx
+            image: nginx:1.14.2
+            ports:
+            - containerPort: 80
+        #kubectl apply -f pod.yml
+        ```
+
+#### Pod Template 
+    - Teamplate :
+        ```bash
+        apiVersion: v1
+        kind: Pod
+        metadata:
+        name: <Podname>
+        labels:
+            <key>:<value>
+        namespace:<nsName>
+        spec:
+        containers:
+        - name: <name of container>
+            image: <image>
+            ports:
+            - containerPort: <containerPort>
+            volumeMounts:
+            - name: <volname>
+            mountpath: <containerDirPath>
+            resoure:
+            requets:
+            cpu: 200m
+            memory: 256Mi
+            limits:
+            cpu: 500m
+            memory: 512Mi
+        volumes:
+        - name: <volName>
+            hostPath:
+            path: <Hostfolder>
+        # kubectl get pods -o wide
+        # kubectl describe pod <podname>
+        # kubectl describe pod nginx
+        ```
