@@ -264,8 +264,9 @@ Docs: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespac
 **Example:** The following is an example of a Pod which consists of a container running the image `nginx:1.14.2`.
 
 #### pods/simple-pod.yaml
+
     - Create Pod :
-        ``` bash 
+      ``` bash 
         apiVersion: v1
         kind: Pod
         metadata:
@@ -276,12 +277,13 @@ Docs: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespac
             image: nginx:1.14.2
             ports:
             - containerPort: 80
-        #kubectl apply -f pod.yml
-        ```
+        
+        kubectl apply -f pod.yml
+      ```
 
 #### Pod Template 
     - Teamplate :
-        ```bash
+      ```bash
         apiVersion: v1
         kind: Pod
         metadata:
@@ -309,7 +311,8 @@ Docs: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespac
         - name: <volName>
             hostPath:
             path: <Hostfolder>
-        # kubectl get pods -o wide
-        # kubectl describe pod <podname>
-        # kubectl describe pod nginx
-        ```
+
+        kubectl get pods -o wide
+        kubectl describe pod <podname>
+        kubectl describe pod nginx
+      ```
