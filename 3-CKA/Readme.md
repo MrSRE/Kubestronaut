@@ -264,19 +264,18 @@ Docs: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespac
 **Example:** The following is an example of a Pod which consists of a container running the image `nginx:1.14.2`.
 
 #### pods/simple-pod.yaml
-
     - Create Pod :
       ``` bash 
         apiVersion: v1
         kind: Pod
         metadata:
-        name: nginx
+            name: nginx
         spec:
-        containers:
-        - name: nginx
-            image: nginx:1.14.2
-            ports:
-            - containerPort: 80
+            containers:
+            - name: nginx
+              image: nginx:1.14.2
+              ports:
+              - containerPort: 80
         
         kubectl apply -f pod.yml
       ```
@@ -316,3 +315,18 @@ Docs: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespac
         kubectl describe pod <podname>
         kubectl describe pod nginx
       ```
+
+### Busy Box Pod 
+
+    - ```bash
+        apiVersion: v1
+        kind: Pod
+        metadata: 
+        name: busyboxpod
+        spec: 
+        containers:
+            - name: busyboxcon
+            image: busybox
+            command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3600']
+      ```
+

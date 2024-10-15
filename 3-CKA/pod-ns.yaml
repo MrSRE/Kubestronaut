@@ -1,0 +1,20 @@
+---
+# namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+---
+# Pod
+apiVersion: v1
+kind: Pod
+metadata:
+   namespace: dev 
+   name: nginxpod
+spec:
+  containers:
+    - name: nginxcontainer
+      image: nginx
+      ports:
+        - containerPort: 80
+
