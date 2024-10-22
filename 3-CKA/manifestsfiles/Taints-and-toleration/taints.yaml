@@ -1,0 +1,28 @@
+# kubectl taint nodes node-name key=value:taint-effect
+
+# NoSchedule
+# PerferedNoSchedule
+# NoExecute
+
+# kubectl taint nodes node1 app=my-app:NoSchedule
+
+apiVersion: v1 
+kind: Pod 
+metadata:
+  name: my-pod
+  labels:
+    app: my-app
+    type: frontend
+spec:
+  containers:
+  - name: my-container
+    image: nginx
+    ports:
+    - containerPort: 80
+  tolerations:
+  - key: "app"
+    operate: "Equal"
+    value: "MFA"
+    effect: "NoSchedule"
+
+# kubectl describe node node1 | grep -i  taints

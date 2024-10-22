@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: my-deployment-demo
+  labels:
+    app: web-app
+spec:
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      name:  web-app
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: mydeployment-nginx
+        image: nginx
+        ports:
+        - containerPort: 80

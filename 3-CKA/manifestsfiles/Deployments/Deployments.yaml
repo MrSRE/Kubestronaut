@@ -1,0 +1,34 @@
+# kubectl apply -f Deployments.yaml
+# kubectl create -f Deployments.yaml --record
+# kubectl rollout status deployment.apps/my-deployment-demo
+
+# kubectl set image deployment <deploymentname> <containerName>=<update Image name >
+# kubectl set image deployment.apps/my-deployment-demo nginx=nginx:latest
+
+# kubectl rollout status deployment.apps/my-deployment-demo
+# kubectl rollout histroy deployment.apps/my-deployment-demo
+# kubectl rollout undo deployment.apps/my-deployment-demo
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment-demo
+  labels:
+    app: web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      name:  web-app
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: mydeployment-nginx
+        image: nginx
+        ports:
+        - containerPort: 80

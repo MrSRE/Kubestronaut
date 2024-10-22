@@ -1,0 +1,19 @@
+
+# kubectl label nodes <Node-name> <label-key>=<label-value>
+# kubectl label nodes node1 size=Large
+
+apiVersion: v1 
+kind: Pod 
+metadata:
+  name: my-pod
+  labels:
+    app: my-app
+    type: frontend
+spec:
+  containers:
+  - name: my-container
+    image: nginx
+    ports:
+    - containerPort: 80
+  nodeSelector: 
+    size: Larger

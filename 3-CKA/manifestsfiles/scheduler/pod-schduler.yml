@@ -1,0 +1,24 @@
+apiVerion: v1
+kind: Pod
+metadata:
+  name:  my-pod-scheduler
+  labels:
+    app:  my-app
+spec:
+  containers:
+    - name : nginxcontainer
+      image: nginx
+      ports:
+        - containerPort 80
+  NodeName: Node1
+--- 
+# pod-Binding
+
+apiVerion: v1 
+kind: Binding 
+metadata:
+  name: nginx-binding 
+target: 
+  apiVerion: v1 
+  kind: Node 
+  name: node2

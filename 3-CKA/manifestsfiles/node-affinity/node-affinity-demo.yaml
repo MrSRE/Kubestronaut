@@ -1,0 +1,37 @@
+# Available
+# requiredDuringSchedulingIgnoredDuringExecution
+# preferredDuringSchedulingIgnoredDuringExecution
+
+# Planned
+# requiredDuringSchedulingRequiredDuringExecution
+# preferredDuringSchedulingRequiredDuringExecution
+
+#  Type             DuringScheduling        DuringExecution
+#  type1              Required                Ignore
+#  type2              Preferred               Ignore
+#  type3              Required                Required
+#  type4              Preferred               Required
+
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: affinity-pod-demo
+  labels:
+    name:  affinity-pod-demo
+    app: affinity-pod-demo-app 
+spec:
+  containers:
+    - name: affinity-pod-demo
+      image: nginx
+      ports:
+        - containerPort: 80
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: size
+            operator: In # or  NotIn, Exists - will check if label is exists or not , DoesNotExist
+            values:
+            - Large # or small
+

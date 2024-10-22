@@ -1,0 +1,17 @@
+apiVerion: v1
+kind: Pod
+metadata:
+  name:  my-pod-scheduler
+  labels:  # Labels for pod
+    app:  my-app
+    type: frontend
+  annotations: #  Annotations for pod
+    buildversion : 1.22
+spec:
+  containers:
+    - name : nginxcontainer
+      image: nginx
+      ports:
+        - containerPort 80
+
+# kubectl get pods --selector app=my-app
