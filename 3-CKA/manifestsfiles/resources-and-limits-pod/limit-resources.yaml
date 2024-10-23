@@ -1,0 +1,34 @@
+ # limit range CPU
+apiVersion: v1 
+kind: LimitRange
+metadata:
+  name: cpu-resources-constraint
+spec:
+  limits:
+  - defalut: 
+      cpu: 500
+    defalutRequest:
+      cpu: 500
+    max: 
+      cpu: 1
+    min:
+      cpu: 100m
+    type: container
+--- 
+# limit Range memory
+apiVersion: v1 
+kind: LimitRange
+metadata:
+  name: memory-resources-constraint
+spec:
+  limits:
+  - defalut: 
+      memory: 1Gi
+    defalutRequest:
+      memory: 1Gi
+    max: 
+      memory: 1Gi
+    min:
+      memory: 500Mi
+    type: container
+---

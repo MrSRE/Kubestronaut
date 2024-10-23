@@ -10,4 +10,4 @@ profiles:
 leaderElection:
   leaderElect: true
   resourceNamespace: kube-system
-  resourceName: lock-object-my-scheduler
+  resourceName: lock-object-my-scheduler # for addtional MasterNodes

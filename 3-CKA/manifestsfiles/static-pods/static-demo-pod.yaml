@@ -1,0 +1,11 @@
+# kubelet.service
+    # ExecStart=/usr/local/bin/kubelet \\
+    #   --pod-manifest-path=/etc/kubernetes/manifests \\
+
+# or 
+    # --config=kubeconfig.yaml
+
+# kubeconfig.yaml
+
+# staticPodPath: /etc/kuberenetes/manifests
+
